@@ -1,0 +1,46 @@
+{
+  "SUT-span-edit": {
+    "runs": 415,
+    "correct_rate": 1.0,
+    "refused_rate": 0.0,
+    "collateral_rate": 0.0,
+    "fabrication_rate": 0.0,
+    "comments_preserved_rate": 1.0,
+    "format_preserved_rate": 1.0,
+    "diff_size_mean": 2,
+    "diff_size_std": 0.0
+  },
+  "B1-full-file": {
+    "runs": 415,
+    "correct_rate": 0.0241,
+    "refused_rate": 0.0,
+    "collateral_rate": 0.9759,
+    "fabrication_rate": 0.0,
+    "comments_preserved_rate": 0.0241,
+    "format_preserved_rate": 0.0241,
+    "diff_size_mean": 921.3,
+    "diff_size_std": 144.45
+  },
+  "B2-unified-diff": {
+    "runs": 415,
+    "correct_rate": 0.0361,
+    "refused_rate": 0.9639,
+    "collateral_rate": 0.0,
+    "fabrication_rate": 0.0,
+    "comments_preserved_rate": 0.0361,
+    "format_preserved_rate": 0.0361,
+    "diff_size_mean": 2,
+    "diff_size_std": 0.0
+  },
+  "B3-diff-retry": {
+    "runs": 415,
+    "correct_rate": 0.0916,
+    "refused_rate": 0.9084,
+    "collateral_rate": 0.0,
+    "fabrication_rate": 0.0,
+    "comments_preserved_rate": 0.0916,
+    "format_preserved_rate": 0.0916,
+    "diff_size_mean": 2,
+    "diff_size_std": 0.0
+  }
+}

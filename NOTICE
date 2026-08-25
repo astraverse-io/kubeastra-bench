@@ -1,0 +1,23 @@
+kubeastra-bench
+Copyright 2026 Pruthvi Davineni
+
+This repository is the evaluation artifact for the KubeAstra span-edit paper.
+The system under test (the span-edit pipeline) lives in astraverse-io/KubeAstra
+and is licensed Apache-2.0.
+
+Bundled test manifests under corpus-real/ are redistributed unmodified under the
+Apache License, Version 2.0, from their upstream projects:
+
+  - Online Boutique — corpus-real/onlineboutique-kubernetes-manifests.yaml
+    Source: github.com/GoogleCloudPlatform/microservices-demo
+    Path:   release/kubernetes-manifests.yaml
+    Commit: 34ffea9175946982c3088ed84994fe6019ad6e92
+    License: Apache-2.0. Copyright Google LLC.
+
+  - Kustomize helloWorld example — corpus-real/kustomize-helloworld/*.yaml
+    Source: github.com/kubernetes-sigs/kustomize
+    Path:   examples/helloWorld/{deployment,kustomization}.yaml
+    Commit: 12f9e6391464b3ad9dd3fe8182049dc1b1772990
+    License: Apache-2.0. Copyright The Kubernetes Authors.
+
+Exact source paths and commit SHAs are recorded in corpus-real/provenance.json.

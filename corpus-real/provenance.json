@@ -1,0 +1,27 @@
+{
+  "_note": "Real-world corpus: manifests fetched from license-verified, SHA-pinned public repos. Only Apache-2.0 / permissive sources included; each entry records repo, commit SHA, license, and source path for reproducibility (paper-C1-benchmark-spec.md §2.2). Frozen — do not update SHAs in place.",
+  "onlineboutique-kubernetes-manifests.yaml": {
+    "source": "github.com/GoogleCloudPlatform/microservices-demo",
+    "sha": "34ffea9175946982c3088ed84994fe6019ad6e92",
+    "license": "Apache-2.0",
+    "path": "release/kubernetes-manifests.yaml",
+    "stratum": "S1-real-plain",
+    "difficulty": ["comment-heavy", "multi-document", "multi-container", "quoted-env-values", "real"]
+  },
+  "kustomize-helloworld/deployment.yaml": {
+    "source": "github.com/kubernetes-sigs/kustomize",
+    "sha": "12f9e6391464b3ad9dd3fe8182049dc1b1772990",
+    "license": "Apache-2.0",
+    "path": "examples/helloWorld/deployment.yaml",
+    "stratum": "S2-kustomize-base",
+    "difficulty": ["kustomize", "real"]
+  },
+  "kustomize-helloworld/kustomization.yaml": {
+    "source": "github.com/kubernetes-sigs/kustomize",
+    "sha": "12f9e6391464b3ad9dd3fe8182049dc1b1772990",
+    "license": "Apache-2.0",
+    "path": "examples/helloWorld/kustomization.yaml",
+    "stratum": "S2-kustomize-base",
+    "difficulty": ["kustomize"]
+  }
+}

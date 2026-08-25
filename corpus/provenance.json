@@ -1,0 +1,21 @@
+{
+  "_note": "Seed corpus for the C1 benchmark. These manifests are SYNTHETIC (hand-authored) so the harness runs end-to-end today. Real public-repo manifests (license-gated, SHA-pinned) get added per paper-C1-benchmark-spec.md §7 before the paper's runs.",
+  "deployment-api.yaml": {
+    "source": "synthetic-seed",
+    "license": "N/A (synthetic)",
+    "stratum": "S3-synthetic",
+    "difficulty": ["comment-heavy", "multi-container", "named-list"]
+  },
+  "statefulset-db.yaml": {
+    "source": "synthetic-seed",
+    "license": "N/A (synthetic)",
+    "stratum": "S3-synthetic",
+    "difficulty": ["quoted-scalar"]
+  },
+  "multidoc-worker.yaml": {
+    "source": "synthetic-seed",
+    "license": "N/A (synthetic)",
+    "stratum": "S3-synthetic",
+    "difficulty": ["multi-document"]
+  }
+}

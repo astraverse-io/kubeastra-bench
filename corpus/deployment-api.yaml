@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: prod
+  labels:
+    app: api-gateway          # keep label in sync with the Service selector
+spec:
+  replicas: 3                  # bumped during the Nov incident
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: sidecar
+          image: envoy:1.29
+        - name: api
+          image: ghcr.io/acme/api:v1.4.2
+          env:
+            - name: LOG_LEVEL
+              value: info
+            - name: REGION
+              value: us-east-1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 256Mi     # raised after OOMKills
