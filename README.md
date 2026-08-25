@@ -21,6 +21,7 @@ oracle.py            correctness judge (parse-and-compare, named-list aware)
 appliers.py          diff appliers: strict / offset-tolerant / ws-insensitive / GNU patch
 applier_study.py     re-score captured B2 diffs under every applier (Table 5)
 refusal.py           G5 fail-closed adversarial stratum (Sec 6.8)
+oracle_audit.py      independent manual audit of the oracle (Sec 7)
 run.py               orchestrator: system x task x seed -> oracle -> metrics
 batch.py             Anthropic Message Batches executor (50% off, async)
 corpus_builder.py    task generator (round-trip value mutations)
@@ -53,6 +54,10 @@ python applier_study.py --tasks tasks-real.jsonl --corpus corpus-real --out resu
 
 # 3. G5 fail-closed refusal stratum (Sec 6.8)
 python refusal.py
+
+# 4. oracle audit — stratified sample for manual adjudication (Sec 7)
+python oracle_audit.py --tasks tasks-real.jsonl --corpus corpus-real \
+    --diffs results/appliers/raw-diffs.jsonl
 ```
 
 Expected (matches the paper):
@@ -62,6 +67,10 @@ Expected (matches the paper):
   **0.140 misapplied** · with `-l` (ignore whitespace) 0.202 misapplied.
 - **Refusal (Sec 6.8):** precision 1.00, control coverage 1.00, recall 0.889,
   one documented leak (YAML aliases).
+- **Oracle audit (Sec 7):** the n=30 stratified sample used in the paper is in
+  `results/oracle-audit-n30.txt`; independent adjudication matched the oracle on
+  all 30, including every misapplied case. (The SUT stratum needs a KubeAstra
+  checkout beside this repo; the B2 strata do not.)
 
 ## The SUT dependency (KubeAstra)
 

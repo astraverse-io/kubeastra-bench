@@ -1,0 +1,338 @@
+# Oracle audit — stratified sample (seed=7, 10/stratum)
+
+## SUT (oracle=correct)   (pool: 83)
+
+[SUT-1] SUT  task=c86b3807dcfa
+  INTENT: Deployment/recommendationservice  set  spec.template.spec.containers.server.image  ->  'us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/recommendationservice:v0.10.7'
+  DIFF (original -> output):
+      @@ -558,3 +558,3 @@
+                 readOnlyRootFilesystem: true
+      -        image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/recommendationservice:v0.10.6
+      +        image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/recommendationservice:v0.10.7
+               ports:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-2] SUT  task=44834d6ecf31
+  INTENT: Deployment/currencyservice  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '200m'
+  DIFF (original -> output):
+      @@ -271,3 +271,3 @@
+                 requests:
+      -            cpu: 100m
+      +            cpu: 200m
+                   memory: 64Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-3] SUT  task=13da7ced20cc
+  INTENT: Deployment/checkoutservice  set  spec.template.spec.containers.server.resources.limits.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -663,3 +663,3 @@
+                   limits:
+      -              cpu: 200m
+      +              cpu: 400m
+                     memory: 128Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-4] SUT  task=8821e36e0020
+  INTENT: Deployment/frontend  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '200m'
+  DIFF (original -> output):
+      @@ -107,3 +107,3 @@
+                   requests:
+      -              cpu: 100m
+      +              cpu: 200m
+                     memory: 64Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-5] SUT  task=51c42b41c3e3
+  INTENT: Deployment/adservice  set  spec.template.spec.containers.server.image  ->  'us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.7'
+  DIFF (original -> output):
+      @@ -179,3 +179,3 @@
+                 readOnlyRootFilesystem: true
+      -        image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.6
+      +        image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.7
+               ports:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-6] SUT  task=bb1c95461e67
+  INTENT: Deployment/paymentservice  set  spec.template.spec.containers.server.env.DISABLE_PROFILER.value  ->  '1_v2'
+  DIFF (original -> output):
+      @@ -799,3 +799,3 @@
+               - name: DISABLE_PROFILER
+      -          value: "1"
+      +          value: "1_v2"
+               readinessProbe:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-7] SUT  task=eed88799a096
+  INTENT: Deployment/adservice  set  spec.template.spec.containers.server.resources.requests.memory  ->  '360Mi'
+  DIFF (original -> output):
+      @@ -188,3 +188,3 @@
+                   cpu: 200m
+      -            memory: 180Mi
+      +            memory: 360Mi
+                 limits:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-8] SUT  task=7ca91642edb5
+  INTENT: Deployment/recommendationservice  set  spec.template.spec.containers.server.env.PORT.value  ->  '8080_v2'
+  DIFF (original -> output):
+      @@ -571,3 +571,3 @@
+               - name: PORT
+      -          value: "8080"
+      +          value: "8080_v2"
+               - name: PRODUCT_CATALOG_SERVICE_ADDR
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-9] SUT  task=bf8d81d01d7f
+  INTENT: Deployment/shippingservice  set  spec.template.spec.containers.server.env.PORT.value  ->  '50051_v2'
+  DIFF (original -> output):
+      @@ -869,3 +869,3 @@
+               - name: PORT
+      -          value: "50051"
+      +          value: "50051_v2"
+               - name: DISABLE_PROFILER
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[SUT-10] SUT  task=7c2b9905b743
+  INTENT: Deployment/frontend  set  spec.template.spec.containers.server.env.PORT.value  ->  '8080_v2'
+  DIFF (original -> output):
+      @@ -73,3 +73,3 @@
+                 - name: PORT
+      -            value: "8080"
+      +            value: "8080_v2"
+                 - name: PRODUCT_CATALOG_SERVICE_ADDR
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+## B2 patch-fuzz (oracle=CORRECT)   (pool: 342)
+
+[B2-1] B2-patchfuzz  task=b96cd8b278c4
+  INTENT: Deployment/checkoutservice  set  spec.template.spec.containers.server.env.PRODUCT_CATALOG_SERVICE_ADDR.value  ->  'productcatalogservice:3550_v2'
+  DIFF (original -> output):
+      @@ -647,3 +647,3 @@
+                 - name: PRODUCT_CATALOG_SERVICE_ADDR
+      -            value: "productcatalogservice:3550"
+      +            value: "productcatalogservice:3550_v2"
+                 - name: SHIPPING_SERVICE_ADDR
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-2] B2-patchfuzz  task=8a8df6ed9a43
+  INTENT: Deployment/cartservice  set  spec.template.spec.containers.server.resources.limits.memory  ->  '256Mi'
+  DIFF (original -> output):
+      @@ -340,3 +340,3 @@
+                   cpu: 300m
+      -            memory: 128Mi
+      +            memory: 256Mi
+               readinessProbe:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-3] B2-patchfuzz  task=b4e1abec8058
+  INTENT: Deployment/frontend  set  spec.template.spec.containers.server.resources.limits.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -110,3 +110,3 @@
+                   limits:
+      -              cpu: 200m
+      +              cpu: 400m
+                     memory: 128Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-4] B2-patchfuzz  task=51c42b41c3e3
+  INTENT: Deployment/adservice  set  spec.template.spec.containers.server.image  ->  'us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.7'
+  DIFF (original -> output):
+      @@ -179,3 +179,3 @@
+                 readOnlyRootFilesystem: true
+      -        image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.6
+      +        image: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.7
+               ports:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-5] B2-patchfuzz  task=2084345061a9
+  INTENT: Deployment/recommendationservice  set  spec.template.spec.containers.server.env.PRODUCT_CATALOG_SERVICE_ADDR.value  ->  'productcatalogservice:3550_v2'
+  DIFF (original -> output):
+      @@ -573,3 +573,3 @@
+               - name: PRODUCT_CATALOG_SERVICE_ADDR
+      -          value: "productcatalogservice:3550"
+      +          value: "productcatalogservice:3550_v2"
+               - name: DISABLE_PROFILER
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-6] B2-patchfuzz  task=f36317f44d81
+  INTENT: Deployment/recommendationservice  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '200m'
+  DIFF (original -> output):
+      @@ -578,3 +578,3 @@
+                 requests:
+      -            cpu: 100m
+      +            cpu: 200m
+                   memory: 220Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-7] B2-patchfuzz  task=0c54b25d1e89
+  INTENT: Deployment/frontend  set  spec.template.spec.containers.server.env.PRODUCT_CATALOG_SERVICE_ADDR.value  ->  'productcatalogservice:3550_v2'
+  DIFF (original -> output):
+      @@ -75,3 +75,3 @@
+                 - name: PRODUCT_CATALOG_SERVICE_ADDR
+      -            value: "productcatalogservice:3550"
+      +            value: "productcatalogservice:3550_v2"
+                 - name: CURRENCY_SERVICE_ADDR
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-8] B2-patchfuzz  task=f798d2da7ffa
+  INTENT: Deployment/cartservice  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -336,3 +336,3 @@
+                 requests:
+      -            cpu: 200m
+      +            cpu: 400m
+                   memory: 64Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-9] B2-patchfuzz  task=dcde0d95d6fd
+  INTENT: Deployment/adservice  set  spec.template.spec.containers.server.resources.limits.memory  ->  '600Mi'
+  DIFF (original -> output):
+      @@ -191,3 +191,3 @@
+                   cpu: 300m
+      -            memory: 300Mi
+      +            memory: 600Mi
+               readinessProbe:
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+[B2-10] B2-patchfuzz  task=a65c9dc0d883
+  INTENT: Deployment/emailservice  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '200m'
+  DIFF (original -> output):
+      @@ -735,3 +735,3 @@
+                 requests:
+      -            cpu: 100m
+      +            cpu: 200m
+                   memory: 64Mi
+  ORACLE: correct=True  target_found=True  collateral=[]  diff=+1/-1
+      reason: correct: exactly the target scalar changed
+
+## B2 patch-fuzz (oracle=MISAPPLIED)   (pool: 58)
+
+[B2-1] B2-patchfuzz  task=8a4a27646d2c
+  INTENT: Deployment/shippingservice  set  spec.template.spec.containers.server.resources.limits.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -811,3 +811,3 @@
+                 limits:
+      -            cpu: 200m
+      +            cpu: 400m
+                   memory: 128Mi
+  ORACLE: correct=False  target_found=True  collateral=[[26, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'limits', 'cpu']]  diff=+1/-1
+      reason: target value is '200m', expected '400m'
+
+[B2-2] B2-patchfuzz  task=26059448031f
+  INTENT: Deployment/paymentservice  set  spec.template.spec.containers.server.resources.limits.memory  ->  '256Mi'
+  DIFF (original -> output):
+      @@ -739,3 +739,3 @@
+                   cpu: 200m
+      -            memory: 128Mi
+      +            memory: 256Mi
+       ---
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'limits', 'memory']]  diff=+1/-1
+      reason: target value is '128Mi', expected '256Mi'
+
+[B2-3] B2-patchfuzz  task=d1731ab4758f
+  INTENT: Deployment/productcatalogservice  set  spec.template.spec.containers.server.resources.limits.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -738,3 +738,3 @@
+                 limits:
+      -            cpu: 200m
+      +            cpu: 400m
+                   memory: 128Mi
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'limits', 'cpu']]  diff=+1/-1
+      reason: target value is '200m', expected '400m'
+
+[B2-4] B2-patchfuzz  task=b66b7a43da82
+  INTENT: Deployment/shippingservice  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '200m'
+  DIFF (original -> output):
+      @@ -808,3 +808,3 @@
+                 requests:
+      -            cpu: 100m
+      +            cpu: 200m
+                   memory: 64Mi
+  ORACLE: correct=False  target_found=True  collateral=[[26, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'requests', 'cpu']]  diff=+1/-1
+      reason: target value is '100m', expected '200m'
+
+[B2-5] B2-patchfuzz  task=3e36ba64138a
+  INTENT: Deployment/paymentservice  set  spec.template.spec.containers.server.resources.limits.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -738,3 +738,3 @@
+                 limits:
+      -            cpu: 200m
+      +            cpu: 400m
+                   memory: 128Mi
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'limits', 'cpu']]  diff=+1/-1
+      reason: target value is '200m', expected '400m'
+
+[B2-6] B2-patchfuzz  task=0ee2191e6bab
+  INTENT: Deployment/paymentservice  set  spec.template.spec.containers.server.resources.requests.memory  ->  '128Mi'
+  DIFF (original -> output):
+      @@ -736,3 +736,3 @@
+                   cpu: 100m
+      -            memory: 64Mi
+      +            memory: 128Mi
+                 limits:
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'requests', 'memory']]  diff=+1/-1
+      reason: target value is '64Mi', expected '128Mi'
+
+[B2-7] B2-patchfuzz  task=bf8d81d01d7f
+  INTENT: Deployment/shippingservice  set  spec.template.spec.containers.server.env.PORT.value  ->  '50051_v2'
+  DIFF (original -> output):
+      @@ -797,3 +797,3 @@
+               - name: PORT
+      -          value: "50051"
+      +          value: "50051_v2"
+               - name: DISABLE_PROFILER
+  ORACLE: correct=False  target_found=True  collateral=[[26, 'spec', 'template', 'spec', 'containers', 'server', 'env', 'PORT', 'value']]  diff=+1/-1
+      reason: target value is '50051', expected '50051_v2'
+
+[B2-8] B2-patchfuzz  task=d1731ab4758f
+  INTENT: Deployment/productcatalogservice  set  spec.template.spec.containers.server.resources.limits.cpu  ->  '400m'
+  DIFF (original -> output):
+      @@ -738,3 +738,3 @@
+                 limits:
+      -            cpu: 200m
+      +            cpu: 400m
+                   memory: 128Mi
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'limits', 'cpu']]  diff=+1/-1
+      reason: target value is '200m', expected '400m'
+
+[B2-9] B2-patchfuzz  task=b66b7a43da82
+  INTENT: Deployment/shippingservice  set  spec.template.spec.containers.server.resources.requests.cpu  ->  '200m'
+  DIFF (original -> output):
+      @@ -735,3 +735,3 @@
+                 requests:
+      -            cpu: 100m
+      +            cpu: 200m
+                   memory: 64Mi
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'requests', 'cpu']]  diff=+1/-1
+      reason: target value is '100m', expected '200m'
+
+[B2-10] B2-patchfuzz  task=817d83be2523
+  INTENT: Deployment/productcatalogservice  set  spec.template.spec.containers.server.resources.requests.memory  ->  '128Mi'
+  DIFF (original -> output):
+      @@ -736,3 +736,3 @@
+                   cpu: 100m
+      -            memory: 64Mi
+      +            memory: 128Mi
+                 limits:
+  ORACLE: correct=False  target_found=True  collateral=[[23, 'spec', 'template', 'spec', 'containers', 'server', 'resources', 'requests', 'memory']]  diff=+1/-1
+      reason: target value is '64Mi', expected '128Mi'
+
