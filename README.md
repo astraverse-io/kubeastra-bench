@@ -3,7 +3,8 @@
 Reproducible benchmark for **deterministic, minimal-diff GitOps remediation** —
 the evaluation artifact for the paper *Don't Let the Model Write the YAML:
 Deterministic, Minimal-Diff GitOps Remediation from LLM-Proposed Field Changes*
-(preprint: [`paper-C1.pdf`](paper-C1.pdf)). The system under test (the span-edit
+(preprint: [arXiv:2609.00227](https://arxiv.org/abs/2609.00227) — PDF also in
+[`paper-C1.pdf`](paper-C1.pdf)). The system under test (the span-edit
 pipeline) lives in [astraverse-io/KubeAstra](https://github.com/astraverse-io/KubeAstra)
 (`ui/backend/gitops`, Apache-2.0).
 
